@@ -1,0 +1,210 @@
+
+<div ng-app="myApp" ng-controller="registrationController as loginCtrl" class="container col-md-offset-4">
+    <br/>
+    <h2 class="active">Register</h2>
+    <hr>
+    <br>
+    <form class="form-horizontal " name="registerForm" ng-submit="registration()" novalidate>
+
+        <!-- Username field -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>username</label>
+                <input type="text" class="form-control" name="username" placeholder="select username" ng-model="username"
+                ng-minlength="3"
+                ng-maxlength="8"
+                required/>
+                <span ng-show="registerForm.username.$error.required">username is required.</span>
+                <span ng-show="registerForm.username.$error.minlength">minimum length of 3 letters</span>
+                <span ng-show="registerForm.username.$error.maxlength">maximum length of 8 letters</span>
+
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <!-- Password field -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>password</label>
+                <input type="password" class="form-control" placeholder="Enter password" name="password" placeholder="Pick a password"
+                    ng-model="password" ng-minlength="5" ng-maxlength="10" required/>
+                <span ng-show="registerForm.password.$error.required">username is required.</span>
+                <span ng-show="registerForm.password.$error.minlength">minimum length of 5 letters</span>
+                <span ng-show="registerForm.password.$error.maxlength">maximum length of 10 letters</span>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <!-- First Name field -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>first name</label>
+                <input type="text" class="form-control" name="firstName" placeholder="Enter first name" ng-model="firstName" required/>
+                <span ng-show="registerForm.firstName.$error.required">first name is required.</span>
+
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <!-- Last Name field -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>last name</label>
+                <input type="text" class="form-control" name="lastName" placeholder="Enter last name" ng-model="lastName" required/>
+                <span ng-show="registerForm.lastName.$error.required">last name is required.</span>
+
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <!-- City field -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>city</label>
+                <input type="text" class="form-control" name="userCity" placeholder="Enter city" ng-model="city" question1/>
+                <span ng-show="registerForm.userCity.$error.required">city is required.</span>
+
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <!-- Country field -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label >country</label>
+                <select name="selectCountry" id="selectCountry" class="form-control" ng-click="getCounties()" ng-model="country" question1/>
+                <option  ng-repeat="x in countries" value={{x.name}}> {{x.name}} </option>
+                </select>
+                <span ng-show="registerForm.selectCountry.$error.required">country is required</span>
+            </div>
+        </div>
+
+
+        <!-- Email field -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>email</label>
+                <input type="email" class="form-control" name="email" autocomplete="on" placeholder="Enter email address" ng-model="email" required/>
+                <span ng-show="registerForm.email.$error.required">Email is required.</span>
+                <span ng-show="registerForm.email.$error.email">Invalid email address.</span>
+                </span>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+
+        <br>
+        <br>
+        <label><b>categories of interest:</b></label>
+        <div>chose at least two options:</div>
+
+
+        <!-- <div class="row">
+            <ul class="list-group">
+                <li class="list-group-item"
+                    ng-repeat="item in categories">
+                    <label> <input type="checkbox"
+                               ng-model="xyz"
+                               ng-checked="registrationController.selectedCategories.indexOf(item.id) > -1"
+                               ng-click="registrationController.toggleCategories(item.id)"
+                               ng-required="registrationController.selectedCategories.length < 3"> {{item.category}}</label>
+                </li>
+            </ul>
+        </div>
+ -->
+
+
+<label ng-repeat="catName in categories">
+  <input
+    type="checkbox"
+    name="selectedcategories[]"
+    value="{{catName}}"
+    ng-checked="selection.indexOf(catName) > -1"
+    ng-click="toggleSelection(catName)"
+  > {{catName}}
+</label>
+
+<!-- <label ng-repeat="cat in categories">
+  <input type="checkbox" checklist-model="selectedCategories" checklist-value="cat"> {{cat}}
+</label> -->
+
+        <!-- <label>Museums
+        <input type="checkbox" ng-model="checkboxModel.museums">
+        </label><br/>
+        <label>Nature & Parks:
+        <input type="checkbox" ng-model="checkboxModel.natureAndParks">
+        </label><br/>
+        <label>Nightlife
+        <input type="checkbox" ng-model="checkboxModel.nightlife">
+        </label><br/>
+        <label>Shopping
+        <input type="checkbox" ng-model="checkboxModel.natureAndParks">
+        </label><br/>
+        <label>Sights & Landmarks
+        <input type="checkbox" ng-model="checkboxModel.sightsAndLandmarks">
+        </label>
+ -->
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <label><b>user validation questions:</b></label>
+        <br>
+        <br>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="sel1">Pick first question</label>
+                <select ng-model="question1" name="question1" required>
+                    <option ng-repeat="x in questions">{{x}}</option>
+                </select>
+                <span ng-show="registerForm.question1.$error.required">first question is required</span>
+
+<!--
+                 <input type="text" class="form-control" name="question1" placeholder="Type an question" ng-model="question1" required/>
+                <span ng-show="registerForm.question1.$error.required">first question is required</span> -->
+
+            </div>
+        </div>
+
+<!--         User answer 1 field-->
+       <div class="form-group">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="userAnswer1" placeholder="Type an answer" ng-model="firstAnswer" required />
+                <span ng-show="registerForm.userAnswer1.$error.required">first answer is required</span>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+    <!--  User question 2 field  -->
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="sel1">Pick second question</label>
+                <select ng-model="question2" name="question2" required>
+                    <option ng-repeat="x in questions">{{x}}</option>
+                </select>
+                <span ng-show="registerForm.question2.$error.required">seconed question is required</span>
+                <!--  <input type="text" class="form-control" name="question2" placeholder="Type an question" ng-model="question2" required />
+                <span ng-show="registerForm.question2.$error.required">seconed question is required</span>                 -->
+            </div>
+        </div>
+
+<!--         User answer 2 field  -->
+         <div class="form-group">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="userAnswer2" placeholder="Type an answer" ng-model="secondAnswer" required/>
+                <span ng-show="registerForm.userAnswer2.$error.required">second answer is required</span>
+
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <br>
+        <br>
+        <input type="submit" value="Register" class="btn btn-primary col-sm-offset-1"  ng-disabled="registerForm.$invalid"/>
+<!--         <input type="reset" value="Reset" ng-click="resetForm()" class="btn"/>
+ -->    </form>
+
+
+</div>

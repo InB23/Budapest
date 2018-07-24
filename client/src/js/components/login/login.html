@@ -1,0 +1,39 @@
+<div ng-app="myApp" ng-controller="loginController">
+<br>
+  <br>
+  <br>
+
+  <div>
+    <div class="login-container container">
+      <div class="card login-card">
+        <div class="login col-md-4 col-md-offset-4 col-sm-offset-3 col-sm-6 col-xs-8 col-xs-offset-2" id="login_div">
+          <div class="login-form">
+            <form name="myForm" ng-submit="login()" class="form-horizontal" role="form" novalidate>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" value="ahron" ng-model="user.username" class="form-control" name="username" placeholder="Enter username" required="">
+                <span ng-show="myForm.username.$error.required">username is required</span>
+              </div>
+
+              <div class="form-group">
+                <label for>Password</label>
+                <input type="password" value="1234abcd" ng-model="user.pass" class="form-control"  name="pass" placeholder="Enter Password" required="">
+                <span ng-show="myForm.pass.$error.required">password is required</span>
+
+              </div>
+
+              <div class="form-group">
+                <input type="submit" class="btn btn-info btn-success btn-lg" value="Login" id="getFormDataLogin" ng-disabled="myForm.$invalid">
+              </div>
+            </form>
+            <a ng-href="#!forgotPassword">forgot password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h1 style="text-align: center; font-family:'sofia'; ;font-size: 35px " > not registered yet?  <a ng-href="#!registration"=#!register"> register here </a></h1>
+    </section>
+  </div>
+</div>

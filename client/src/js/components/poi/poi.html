@@ -1,0 +1,27 @@
+
+
+<div>
+  <img ng-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7aBxf4USTHsR70y6NiWz_5gNJJvaH6v7vXY-3rqycbyyEN_gZFg"  height="25" width="25">
+  <span> <input type="text" ng-model="choose"> </span>
+  <span style="margin-left: 40px;">
+  <label ng-repeat="catName in categories">
+  <input
+    type="checkbox"
+    name="selectedcategories[]"
+    value="{{catName}}"
+    ng-checked="selection.indexOf(catName) > -1"
+    ng-click="toggleSelection(catName)"
+  > {{catName}}
+</label>
+</span>
+  <span>
+  <button style="margin-left: 280px;" id="btn" ng-click="orderByMe()">order By site's Rank</button>
+</span>
+</div>
+<br>
+<div class="conteiner" height=" 400" width="400">
+  <!--<poimain  ng-repeat="poi in pois | orderBy:'categoryNameFk' | filter:choose"  ></poimain>-->
+  <poimain  ng-repeat="poi in pois | orderBy:'categoryNameFk' | orderBy:myOrderBy | filter:choose"  ></poimain>
+
+</div>
+

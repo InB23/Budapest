@@ -1,0 +1,32 @@
+<style>
+  .map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+  }
+</style>
+<div class="thumbnail">
+
+  <div class="row">
+
+    <div class="col-lg-2">
+      <img ng-src="{{CurrPoi.poiImage}}" style="width:200px;height:200px;">
+    </div>
+    <div class="col-lg-4">
+      <div id='map-leaflet' class='map'> {{PoiPosition(Lat, Long)}}</div>
+    </div>
+
+    <div class="col-lg-6">
+      <h4> views : {{CurrPoi.poiViews}}</h4>
+      <h4> Description : {{CurrPoi.poiDescription}}</h4>
+      <h4> Rank : {{CurrPoi.poiRank}}</h4>
+      <h4> First Review : {{review1.userReview}}</h4>
+      <h4> Second Review : {{review2.userReview}}</h4>
+    </div>
+
+
+  </div>
+
+</div>
